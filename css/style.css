@@ -1,0 +1,277 @@
+:root {
+  --bg-color: #e6e6e6;
+  --header-bg: #8db600;
+  --card-bg: #dce7be;
+  --text-dark: #333333;
+  --btn-disabled: #bbbbbb;
+  --btn-active: #8db600;
+  --text-blue: #2b6cb0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e6e6e6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Default Container (Tablet / Portrait views - Centered white box) */
+.container {
+  width: 100%;
+  max-width: 600px; /* Limits width so grey background shows on sides (Image 3) */
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 30px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   HEADER / BANNER SECTION
+   ========================================================================== */
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.question-header {
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Horizontal top bar for standard screens */
+.question-top-bar {
+  background-color: var(--header-bg);
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+/* Hide side badge on standard screens */
+.question-side-badge {
+  display: none;
+}
+
+.header-body {
+  padding: 18px 20px;
+}
+
+.question-text {
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.question-subtext {
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+/* External Instructions - Rendered on White Canvas */
+.header-instructions {
+  padding: 10px 2px 0 2px;
+}
+
+.instructions {
+  color: var(--text-blue);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   CARDS GRID & CARD COMPONENT
+   ========================================================================== */
+
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 35px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #000000;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   BUTTON & ACTIONS AREA
+   ========================================================================== */
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  width: 180px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--btn-disabled);
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit.active {
+  background-color: var(--btn-active);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* 1. Large Desktop (4 Columns) */
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 2. Standard Tablet Horizontal */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .card:nth-child(4) {
+    grid-column: 2;
+  }
+}
+
+/* 3. Small / Portrait Tablet */
+@media (min-width: 521px) and (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 480px;
+  }
+}
+
+/* 4. Mobile View */
+@media (max-width: 520px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    width: 100%;
+    background-color: var(--btn-active);
+  }
+}
+
+/* 5. Main Desktop Screen Specific Adjustments */
+@media (min-width: 1280px) {
+  
+  .container {
+    max-width: 100%; /* Spans full screen width (Image 2) */
+    padding: 20px 15px;
+    box-shadow: none;
+  }
+
+
+  .question-header {
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  .question-top-bar {
+    display: none;
+  }
+
+  /* Side Badge Container */
+  .question-side-badge {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-bg);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 16px 12px 20px 12px;
+    border-radius: 6px;
+    width: 85px;
+    margin-right: 12px;
+    min-height: 125px; 
+    flex-shrink: 0;
+  }
+
+  .badge-count {
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .cards-grid {
+    margin-left: 97px;
+    justify-content: space-between; 
+    grid-template-columns: repeat(4, minmax(0, 180px));
+  }
+
+  .header-body {
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    flex: 1;
+    padding: 12px 18px; 
+  }
+
+  .question-text {
+    margin-bottom: 6px; 
+  }
+
+  
+  .header-instructions {
+    padding-left: 97px; 
+    padding-top: 0;
+    margin-top: -30px;
+  }
+}
